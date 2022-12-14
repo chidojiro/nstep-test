@@ -24,7 +24,7 @@ function App() {
           <img src={reactQueryLogo} alt="React Query logo" className="w-16 h-16" />
         </a>
       </header>
-      <h1 className="font-bold text-3xl my-8">Nstep Frontend Challenge</h1>
+      <h1 className="font-bold text-3xl my-8">NStep Frontend Challenge</h1>
 
       <Countdown />
       <CountdownMenu />
