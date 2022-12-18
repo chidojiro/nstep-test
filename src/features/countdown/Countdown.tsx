@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
 /** This is kinda ugly, isn't it, maybe make it absolute import? */
-import { NstButton } from '../../components';
+
+/** RESOLUTION: configure tsconfig.json for IDE recognition and vite.config.js for compilation */
+import { NstButton } from '@/components';
 
 /**
  * Counter is an example of a simple business logic of a click-up counter.
@@ -22,8 +24,6 @@ import { NstButton } from '../../components';
 export const Countdown = () => {
   const [count, setCount] = useState(0);
 
-  return (
-    /** How to make this button accept all <button />-related props. */
-    <NstButton onClick={() => {}}>count is {count}</NstButton>
-  );
+  /** How to make this button accept all <button />-related props. */
+  return <NstButton onClick={() => {}}>count is {count}</NstButton>;
 };
