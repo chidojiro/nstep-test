@@ -2,6 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+    color: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+  }
+
+  html body {
+    @apply box-border;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-[2em];
+  }
+
+  h2 {
+    @apply text-[1.414em];
+  }
+
+  h3 {
+    @apply text-[1.154em];
+  }
+
+  h5 {
+    @apply text-[0.894em];
+  }
+
+  h5 {
+    @apply text-[0.816em];
+  }
+}
+
 /*
 Make a reusable `focusable` tailwind class here that gives a component a focus ring of purple-700 when it is
 ***focus-visible***

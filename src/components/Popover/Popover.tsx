@@ -19,6 +19,34 @@
  *
  * Hint if you are not a11y-familiar: focus management is important to accessible users.
  */
-export const NstPopover = () => {
-  return <></>;
+
+import { Children, Merge } from '@/types';
+import clsx from 'clsx';
+import { NstExtendable, NstExtendableProps } from '../Extendable';
+
+type NstPopoverOwnProps = Children;
+
+export type NstPopoverProps = Merge<NstExtendableProps, NstPopoverOwnProps>;
+
+export const NstPopover = ({
+  children,
+  placement = 'right-start',
+  ...restProps
+}: NstPopoverProps) => {
+  return (
+    <NstExtendable placement={placement} {...restProps}>
+      <div
+        className={clsx(
+          'nst-popover__content',
+          'p-3',
+          'rounded',
+          'bg-white',
+          'shadow',
+          'animate-fade-in animate-expand',
+        )}
+      >
+        {children}
+      </div>
+    </NstExtendable>
+  );
 };

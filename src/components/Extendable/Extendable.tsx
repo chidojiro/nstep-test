@@ -103,15 +103,11 @@ export const NstExtendable = ({
     return () => triggerElement?.removeEventListener('click', handleClick);
   }, [isControlled, isOpenDisclosure, triggerElement]);
 
+  // React.Children.map is used here to get the dom element from children which is a react node
   const clonedTrigger = React.useMemo(() => {
     return React.Children.map(trigger, (child) =>
       React.cloneElement(child, {
         ref: (node: HTMLElement) => {
-          if (!node)
-            throw new Error(
-              'Cannot find the element for the trigger, you probably forgot to forward ref in your trigger component!',
-            );
-
           setTriggerElement(node);
 
           // Call the original ref, if any
@@ -134,7 +130,6 @@ export const NstExtendable = ({
 
   React.useLayoutEffect(() => {
     const handleCloseOnEsc = (e: KeyboardEvent) => {
-      console.log(e.code);
       if (e.code === 'Escape' && isOpen) {
         handleClose();
       }
@@ -163,6 +158,7 @@ export const NstExtendable = ({
     </div>
   );
 
+  // Update position as the dimension of the trigger changes
   useResizeObserver(triggerElement!, () => forceUpdate?.());
 
   return (
