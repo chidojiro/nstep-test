@@ -7,4 +7,4 @@
  *
  * ***BONUS POINT 🎗***: make it Merge<T, U, depth> that handles merging at n-level.
  */
-export type Merge<T, U> = {};
+export type Merge<T, U> = Omit<T, keyof U> & U;
