@@ -1,1 +1,1 @@
-export * from './Extendable'
+export * from './Extendable';

@@ -16,5 +16,5 @@ Prop types, local interfaces, and types that are not reusable should be in their
 
 ## Bonuses 🍒
 
-These are entire ***OPTIONAL***, if you can explain your thought process
+These are entire **_OPTIONAL_**, if you can explain your thought process
 on how to gradually tackle them, it's already a big plus ✅

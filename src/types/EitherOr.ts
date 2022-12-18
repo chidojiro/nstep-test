@@ -10,7 +10,7 @@
  *    timestamp?: number;
  * }
  * ```
- * 
+ *
  * Let's implement a EitherOr<T,U> utility type that can take care of this XOR logic.
  */
 export type EitherOr<T, U> = {};

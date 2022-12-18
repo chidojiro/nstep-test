@@ -26,5 +26,5 @@ A couple of simple requirements for features-level implementations:
 
 ## Bonuses 🍒
 
-These are entire ***OPTIONAL***, if you can explain your thought process
+These are entire **_OPTIONAL_**, if you can explain your thought process
 on how to gradually tackle them, it's already a big plus ✅

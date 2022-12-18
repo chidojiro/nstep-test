@@ -16,7 +16,7 @@
  *
  * **BONUS BONUS POINT 🦮**: Make it WCAG compliant.
  * > Good place to start: https://yale-a11y.gitlab.io/ui-component-library/tooltips-popovers
- * 
+ *
  * Hint if you are not a11y-familiar: focus management is important to accessible users.
  */
 export const NstPopover = () => {

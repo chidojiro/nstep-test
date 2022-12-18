@@ -27,11 +27,11 @@ A couple of requirements to get this repo running:
 - Yarn
 
 And then just run & be on your merry way:
-```yarn && yarn vite```
+`yarn && yarn vite`
 
 ## Bonuses 🍰
 
-All bonuses are entirely ***OPTIONAL***, if you can explain your thought process
+All bonuses are entirely **_OPTIONAL_**, if you can explain your thought process
 on how to gradually tackle them, it's already a big plus ✅.
 
 This project is not timed, please complete at your own pace.

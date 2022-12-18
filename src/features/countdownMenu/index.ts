@@ -1,1 +1,1 @@
-export * from './CountdownMenu'
+export * from './CountdownMenu';

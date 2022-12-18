@@ -1,11 +1,11 @@
-import "./styles/globals.css";
+import './styles/globals.css';
 
-import reactLogo from "./assets/react.svg";
-import tailwindLogo from "./assets/tailwind.svg";
-import reactQueryLogo from "./assets/react-query.svg";
+import reactLogo from './assets/react.svg';
+import tailwindLogo from './assets/tailwind.svg';
+import reactQueryLogo from './assets/react-query.svg';
 
-import { Countdown } from "./features/countdown";
-import { CountdownMenu } from "./features/countdownMenu";
+import { Countdown } from './features/countdown';
+import { CountdownMenu } from './features/countdownMenu';
 
 function App() {
   return (
