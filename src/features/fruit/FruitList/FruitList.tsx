@@ -24,16 +24,20 @@ export const FruitList = ({ className }: FruitListProps) => {
   });
 
   return (
-    <div className={clsx('grid grid-cols-3 gap-4', className)}>
-      {fruits.map((fruit) => (
-        <FruitCard key={fruit.id} fruit={fruit} />
-      ))}
-      <Pagination
-        onChange={setPage}
-        page={page}
-        totalCount={totalCount}
-        perPage={FRUITS_PER_PAGE}
-      />
+    <div className={className}>
+      <div className={clsx('grid grid-cols-3 gap-4')}>
+        {fruits.map((fruit) => (
+          <FruitCard key={fruit.id} fruit={fruit} />
+        ))}
+      </div>
+      <div className="mt-4 flex justify-end">
+        <Pagination
+          onChange={setPage}
+          page={page}
+          totalCount={totalCount}
+          perPage={FRUITS_PER_PAGE}
+        />
+      </div>
     </div>
   );
 };
