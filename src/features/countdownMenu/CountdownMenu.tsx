@@ -8,6 +8,29 @@
  *
  * **BONUS POINT 🙌**: Add an input in the dropdown that allows user to set the counter to whatever number they want.
  */
-export const CountdownMenu = () => {
-  return <></>;
+
+import { NstDropdown } from '@/components';
+import { FaEllipsisV } from 'react-icons/fa';
+
+export type CountdownMenuProps = {
+  onStart: () => void;
+  onPause: () => void;
+  onDouble: () => void;
+};
+
+export const CountdownMenu = ({ onStart, onDouble, onPause }: CountdownMenuProps) => {
+  return (
+    <NstDropdown
+      className="w-32"
+      trigger={
+        <button>
+          <FaEllipsisV />
+        </button>
+      }
+    >
+      <NstDropdown.Item onClick={onStart}>Start</NstDropdown.Item>
+      <NstDropdown.Item onClick={onPause}>Pause</NstDropdown.Item>
+      <NstDropdown.Item onClick={onDouble}>Double</NstDropdown.Item>
+    </NstDropdown>
+  );
 };

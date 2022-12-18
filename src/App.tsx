@@ -40,7 +40,6 @@ function App() {
           <h1 className="my-8">NStep Frontend Challenge</h1>
 
           <Countdown />
-          <CountdownMenu />
 
           <p className="mt-8">
             See <code>README.md</code> in each folder.

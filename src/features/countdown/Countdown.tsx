@@ -5,6 +5,7 @@ import React from 'react';
 /** RESOLUTION: configure tsconfig.json for IDE recognition and vite.config.js for compilation */
 import { NstButton } from '@/components';
 import { useLocalStorageState } from '@/hooks';
+import { CountdownMenu } from '../countdownMenu';
 
 /**
  * Counter is an example of a simple business logic of a click-up counter.
@@ -29,33 +30,51 @@ export const Countdown = () => {
   const [count, setCount] = useLocalStorageState('countdown', DEFAULT_COUNT);
   const intervalRef = React.useRef<number>();
 
+  const startCountingDown = () => {
+    if (count < 1) {
+      setCount(DEFAULT_COUNT);
+    }
+
+    intervalRef.current = setInterval(() => {
+      setCount((prev) => {
+        const newCount = prev - 1;
+
+        if (newCount < 1) {
+          clearInterval(intervalRef.current);
+          intervalRef.current = undefined;
+        }
+
+        return newCount;
+      });
+    }, 1000);
+  };
+
+  const stopCountingDown = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = undefined;
+  };
+
   const toggleCountingDown = () => {
     if (!intervalRef.current) {
-      if (count === 0) {
-        setCount(DEFAULT_COUNT);
-      }
-      intervalRef.current = setInterval(() => {
-        setCount((prev) => {
-          const newCount = prev - 1;
-
-          if (newCount === 0) {
-            clearInterval(intervalRef.current);
-            intervalRef.current = undefined;
-          }
-
-          return newCount;
-        });
-      }, 100);
+      startCountingDown();
     } else {
-      clearInterval(intervalRef.current);
-      intervalRef.current = undefined;
+      stopCountingDown();
     }
   };
 
   /** How to make this button accept all <button />-related props. */
   return (
-    <NstButton onClick={toggleCountingDown} className="w-[120px]">
-      count is {count}
-    </NstButton>
+    <div className="flex items-center gap-4">
+      <NstButton onClick={toggleCountingDown}>count is {count}</NstButton>
+      <CountdownMenu
+        onStart={() => {
+          if (!intervalRef.current) {
+            startCountingDown();
+          }
+        }}
+        onPause={stopCountingDown}
+        onDouble={() => setCount((prev) => prev * 2)}
+      />
+    </div>
   );
 };
