@@ -1,1 +1,1 @@
-export { useOnEventOutside } from './useOnEventOutside';
+export * from './useOnEventOutside';
