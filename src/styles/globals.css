@@ -8,3 +8,9 @@ Make a reusable `focusable` tailwind class here that gives a component a focus r
 
 Bonus point 🎨: use @apply for everything.
 */
+
+@layer utilities {
+  .focusable {
+    @apply focus-visible:ring focus-visible:ring-purple-700;
+  }
+}
