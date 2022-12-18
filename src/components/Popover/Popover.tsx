@@ -37,7 +37,7 @@ export const NstPopover = ({
     <NstExtendable placement={placement} {...restProps}>
       <div
         className={clsx(
-          'nst-popover__content',
+          'popover__content',
           'p-3',
           'rounded',
           'bg-white',

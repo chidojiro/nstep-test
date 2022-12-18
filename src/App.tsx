@@ -6,7 +6,7 @@ import reactQueryLogo from './assets/react-query.svg';
 
 import { Countdown } from './features/countdown';
 import { CountdownMenu } from './features/countdownMenu';
-import { Divider, NstButton, NstPopover } from './components';
+import { Divider, NstButton, NstDropdown, NstPopover } from './components';
 
 function App() {
   return (
@@ -40,14 +40,29 @@ function App() {
       <Divider className="my-4" />
 
       <h3>Popover</h3>
-
-      <div className="max-w-6xl ">
+      <div>
         <NstPopover trigger={<NstButton className="mt-2">Toggle Popover</NstButton>}>
           There&apos;s nothing here
         </NstPopover>
       </div>
 
       <Divider className="my-4" />
+
+      <h3>Dropdown</h3>
+      <p className="text-gray-400">Please check devtool console to see clicked action</p>
+      <div>
+        <NstDropdown trigger={<NstButton className="mt-2">Toggle Dropdown</NstButton>}>
+          <NstDropdown.Item onClick={() => console.log('Action 1 was clicked!')}>
+            Action 1
+          </NstDropdown.Item>
+          <NstDropdown.Item onClick={() => console.log('Action 2 was clicked!')}>
+            Action 2
+          </NstDropdown.Item>
+          <NstDropdown.Item onClick={() => console.log('Action 3 was clicked!')}>
+            Action 3
+          </NstDropdown.Item>
+        </NstDropdown>
+      </div>
     </main>
   );
 }

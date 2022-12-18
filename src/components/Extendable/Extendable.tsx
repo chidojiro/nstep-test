@@ -37,6 +37,7 @@ export type NstExtendableProps = Omit<OpenClose, 'defaultOpen'> & {
     | ((props: { triggerElement: Element | undefined }) => React.ReactNode);
   usePortal?: boolean;
   closeOnClickOutside?: boolean;
+  onToggle?: () => void;
 };
 
 export const NstExtendable = ({
@@ -51,6 +52,7 @@ export const NstExtendable = ({
   onClose,
   usePortal = true,
   closeOnClickOutside = true,
+  onToggle,
 }: NstExtendableProps) => {
   const isControlled = openProp !== undefined;
 
@@ -95,13 +97,15 @@ export const NstExtendable = ({
     const handleClick = () => {
       if (!isControlled) {
         isOpenDisclosure.toggle();
+      } else {
+        onToggle?.();
       }
     };
 
     triggerElement?.addEventListener('click', handleClick);
 
     return () => triggerElement?.removeEventListener('click', handleClick);
-  }, [isControlled, isOpenDisclosure, triggerElement]);
+  }, [isControlled, isOpenDisclosure, onToggle, triggerElement]);
 
   // React.Children.map is used here to get the dom element from children which is a react node
   const clonedTrigger = React.useMemo(() => {
