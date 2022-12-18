@@ -13,4 +13,8 @@
  *
  * Let's implement a EitherOr<T,U> utility type that can take care of this XOR logic.
  */
-export type EitherOr<T, U> = {};
+type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never };
+
+export type EitherOr<T, U> = T | U extends object
+  ? (Without<T, U> & U) | (Without<U, T> & T)
+  : T | U;
