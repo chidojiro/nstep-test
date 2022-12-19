@@ -73,7 +73,13 @@ export const NstDropdown = ({
 
           if (!isDropdownItem(e.target as HTMLElement)) {
             const items = ref.current?.getElementsByClassName('dropdown-item') ?? [];
-            (items[items?.length - 1] as HTMLElement)?.focus();
+
+            const lastItem = items[items?.length - 1] as HTMLElement;
+
+            lastItem?.focus();
+
+            lastItem.scrollIntoView({ block: 'nearest' });
+
             return;
           }
 
@@ -91,7 +97,14 @@ export const NstDropdown = ({
           e.stopPropagation();
 
           if (!isDropdownItem(e.target as HTMLElement)) {
-            (ref.current?.getElementsByClassName('dropdown-item')[0] as HTMLElement)?.focus();
+            const firstItem = ref.current?.getElementsByClassName(
+              'dropdown-item',
+            )[0] as HTMLElement;
+
+            firstItem?.focus();
+
+            firstItem.scrollIntoView({ block: 'nearest' });
+
             return;
           }
 
