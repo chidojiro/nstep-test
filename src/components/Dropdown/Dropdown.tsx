@@ -118,9 +118,9 @@ export const NstDropdown = ({
       }
     };
 
-    window.addEventListener('keyup', navigateWithKeyboard);
+    window.addEventListener('keydown', navigateWithKeyboard);
 
-    return () => window.removeEventListener('keyup', navigateWithKeyboard);
+    return () => window.removeEventListener('keydown', navigateWithKeyboard);
   }, [onClose, isOpen]);
 
   const providerValue = React.useMemo<NstDropdownProviderValue>(
