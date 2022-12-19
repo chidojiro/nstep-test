@@ -22,6 +22,8 @@ import { NstExtendable, NstExtendableProps } from '../Extendable';
 import { NstDropdownItem } from './DropdownItem';
 import { DropdownProvider, NstDropdownProviderValue } from './DropdownProvider';
 
+const isDropdownItem = (element: HTMLElement) => element.className.includes('dropdown-item');
+
 type NstDropdownOwnProps = Children &
   ClassName & {
     ref?: Ref<HTMLDivElement>;
@@ -38,6 +40,8 @@ export const NstDropdown = ({
   ...restProps
 }: NstDropdownProps) => {
   const isControlled = openProp !== undefined;
+
+  const ref = React.useRef<HTMLDivElement | null>(null);
 
   const isOpenDisclosure = useDisclosure();
 
@@ -59,8 +63,20 @@ export const NstDropdown = ({
 
       const element = e.target as HTMLButtonElement;
 
+      e.preventDefault();
+      e.stopPropagation();
+
       switch (e.code) {
         case 'ArrowUp': {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (!isDropdownItem(e.target as HTMLElement)) {
+            const items = ref.current?.getElementsByClassName('dropdown-item') ?? [];
+            (items[items?.length - 1] as HTMLElement)?.focus();
+            return;
+          }
+
           const previousSibling = element?.previousElementSibling as HTMLButtonElement;
 
           if (!previousSibling) return;
@@ -71,6 +87,14 @@ export const NstDropdown = ({
           return;
         }
         case 'ArrowDown': {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (!isDropdownItem(e.target as HTMLElement)) {
+            (ref.current?.getElementsByClassName('dropdown-item')[0] as HTMLElement)?.focus();
+            return;
+          }
+
           const nextSibling = element?.nextElementSibling as HTMLButtonElement;
 
           if (!nextSibling) return;
@@ -94,9 +118,9 @@ export const NstDropdown = ({
       }
     };
 
-    document.addEventListener('keyup', navigateWithKeyboard);
+    window.addEventListener('keyup', navigateWithKeyboard);
 
-    return () => document.removeEventListener('keyup', navigateWithKeyboard);
+    return () => window.removeEventListener('keyup', navigateWithKeyboard);
   }, [onClose, isOpen]);
 
   const providerValue = React.useMemo<NstDropdownProviderValue>(
@@ -117,6 +141,7 @@ export const NstDropdown = ({
       {({ triggerElement }) => (
         <DropdownProvider value={providerValue}>
           <div
+            ref={ref}
             className={clsx(
               'dropdown__content',
               'rounded',
